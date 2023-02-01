@@ -1,6 +1,8 @@
 package com.app.spring.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +13,10 @@ public class BookReview {
     private Long id;
     private String username;
     private String review;
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "book", referencedColumnName = "id")
+    private Book book;
 
 
 }
