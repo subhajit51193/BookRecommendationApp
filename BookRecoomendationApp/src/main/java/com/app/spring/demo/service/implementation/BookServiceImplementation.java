@@ -23,7 +23,7 @@ public class BookServiceImplementation implements BookService {
     }
     @Override
     public List<Book> getAllBookByAuthor(Author author) {
-        return bookRepository.FindAllByBookByAuthor(author);
+        return bookRepository.findByAuthor(author);
     }
 
     @Override
