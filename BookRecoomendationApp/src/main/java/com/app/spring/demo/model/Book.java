@@ -24,15 +24,20 @@ public class Book {
     private String ISBN;
     @JsonManagedReference
     @ManyToOne
-    @JoinColumn(name = "author", referencedColumnName = "id")
+    @JoinColumn(name  = "author_id")
+//    @JoinColumn(name = "author", referencedColumnName = "id")
     private Author author;
 
     private int reviewCount;
     @JsonManagedReference
-    @OneToMany
-    @JoinColumn(name = "bookReview", referencedColumnName = "id")
+    @OneToMany(mappedBy = "book")
+//   @JoinColumn(name = "bookReview", referencedColumnName = "id") 
     private List<BookReview> bookReview;
     private int ratingCount;
+    
+    @ManyToOne
+    @JoinColumn(name  = "id")
+    private User user;
 
 
 }
