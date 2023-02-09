@@ -21,8 +21,8 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String name;
-    @JsonBackReference
-    @OneToMany(mappedBy = "author")
+    @JsonManagedReference
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Book> book;
 
 }

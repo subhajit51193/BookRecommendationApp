@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
-    public List<Book> FindAllByBookByAuthor(Author author);
-    public Book getBookByTitle(String title);
-    public Book getBookByISBN(String ISBN);
+    List<Book> findAllByAuthor(Author author);
+    Book findBookByTitle(String title);
+    Book findBookByISBN(String ISBN);
 }
