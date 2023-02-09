@@ -1,6 +1,7 @@
 package com.app.spring.demo.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -11,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
@@ -49,6 +51,8 @@ public class User {
 	private Set<Role> roles = new HashSet<>();
 	
 	
+	@OneToMany(mappedBy = "user")
+	private List<Book> books;
 	
 	public User() {
 	  }
@@ -58,5 +62,7 @@ public class User {
 	    this.email = email;
 	    this.password = password;
 	  }
+	  
+	  
 
 }

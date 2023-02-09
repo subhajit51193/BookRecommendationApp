@@ -1,6 +1,5 @@
 package com.app.spring.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,21 +17,20 @@ import java.util.List;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long book_id;
     @Column(name = "title", nullable = false)
     private String title;
     @Column(name = "ISBN", nullable = false)
     private String ISBN;
-    @Column(name = "description", nullable = false)
-    private String description;
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne
-    @JoinColumn(name ="authorId", referencedColumnName = "id")
+    @JoinColumn(name = "author", referencedColumnName = "id")
     private Author author;
 
     private int reviewCount;
     @JsonManagedReference
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
+    @JoinColumn(name = "bookReview", referencedColumnName = "id")
     private List<BookReview> bookReview;
     private int ratingCount;
 
